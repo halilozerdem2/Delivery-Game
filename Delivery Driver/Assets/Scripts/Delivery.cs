@@ -13,36 +13,38 @@ public class Delivery : MonoBehaviour
     
     bool hasPackage;
 
-     void Start() {
+     private void Start() 
+     {
         spriteRenderer=GetComponent<SpriteRenderer>();
     }
    
 
+    
     private void OnTriggerEnter2D(Collider2D other) {
        if(other.tag=="Package"&& !hasPackage)
        {
         Debug.Log("Package Picked Up!!");
         hasPackage=true;
         spriteRenderer.color=hasPackageColor;
-        //spriteRenderer.isVisible=false;
+
+       
         
        } 
         else if (other.tag=="Package"&& hasPackage)
-            Debug.Log("You already have a package");
+            Debug.Log("You already have a package. Deliever it!");
         
         
-        else if(other.tag=="Customer"&& hasPackage)
+        if(other.tag=="Customer"&& hasPackage)
             {
                 Debug.Log("Package Deliverd");
                 Package.transform.position=Customer.transform.position-new Vector3(1,2,0);
                 spriteRenderer.color=noPackageColor;
                 //spriteRenderer.isVisible=true;
-                Destroy(Package.gameObject,0.5f);
+                Destroy(Package.gameObject,0.75f);
                 
             }
         else if(other.tag=="Customer"&& !hasPackage)
-            Debug.Log("You don't have package!");
+            Debug.Log("You don't have package! Take the package");
        
     }
-    
 }

@@ -9,10 +9,14 @@ public class DriverScript : MonoBehaviour
     [SerializeField] float slowSpeed=15f;
     [SerializeField] float boostSpeed=40f;
     bool moving;
+    public static Vector2 PlayerPosition;
    
 
     void Update()
     {
+        PlayerPosition=this.transform.position;
+        
+
         if(moveSpeed<0.1f)
             moving=false;
 
