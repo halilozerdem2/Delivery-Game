@@ -8,39 +8,38 @@ public class Delivery : MonoBehaviour
     [SerializeField] GameObject Package;
     [SerializeField] GameObject Customer;
     [SerializeField] ObjectPool objectPool;
+    
     [SerializeField] Color32 hasPackageColor =new Color32(1,1,1,1);
     [SerializeField] Color32 noPackageColor =new Color32(1,1,1,1);
 
-    [SerializeField] private int PackagesOnTheScreen;
+    
     
     SpriteRenderer spriteRenderer;
     public Vector2 LocationOfThePackageToSpawn;
     public int Xint;
+    private int Counter;
     public int Yint;
 
     
     bool hasPackage;
 
+   
      private void Start() 
-     {
-        PackagesOnTheScreen=3;
-
-        for (int i = 0; i < PackagesOnTheScreen; i++)
-                AddNewPackage();
-        
-        
+     {      
+        AddNewPackage();
+    
         spriteRenderer=GetComponent<SpriteRenderer>();
      }
    
-    
     private void Update() 
-    {   //Ekranda yalnızca üç adet paket görünsün
-        
-        if(PackagesOnTheScreen<3)
-            for (int i = 0; i < 3-PackagesOnTheScreen; i++)
-                 AddNewPackage();
-                  
+    {
+        if(Counter==objectPool.poolCounter)
+            {
+                Debug.Log("Oyun Bitti");
+                Application.Quit();
+            }
     }
+   
 
     private void OnTriggerEnter2D(Collider2D other) {
        if(other.tag=="Package"&& !hasPackage)
@@ -60,15 +59,12 @@ public class Delivery : MonoBehaviour
             {
                 hasPackage=false;
                 Debug.Log("Package Deliverd");
-                Package.transform.position=Customer.transform.position-new Vector3(1,2,0);
+                
+                
                 spriteRenderer.color=noPackageColor;
-                
-                //Paketi obje havuzuna at
-                objectPool.ObjectDeactivate();
-                //Ekrandaki paket sayısını eksilt
-                PackagesOnTheScreen--;
 
-                
+                objectPool.Deactivate(Package);
+                 AddNewPackage();
             }
         else if(other.tag=="Customer"&& !hasPackage)
             Debug.Log("You don't have package! Take the package");
@@ -77,7 +73,6 @@ public class Delivery : MonoBehaviour
     
     private void AddNewPackage()
     {
-        PackagesOnTheScreen++;
         Xint=Random.Range(-50,50);
         Yint=Random.Range(-50,50);   
         
@@ -86,5 +81,7 @@ public class Delivery : MonoBehaviour
         var obj=objectPool.ObjectActivate();
         obj.transform.position=LocationOfThePackageToSpawn;
         
+        
     }
+    
 }

@@ -5,13 +5,17 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     private Queue<GameObject> pooledObjects;
-    public GameObject obj;
+    public int poolCounter;
+    
     [SerializeField] private GameObject objectPrefab;
+    
     [SerializeField] private int poolsize;
+    
 
-    private void Awake() 
+    public void Awake() 
     {
         pooledObjects=new Queue<GameObject>();
+        
 
         for (int i = 0; i < poolsize; i++)
         {
@@ -23,17 +27,26 @@ public class ObjectPool : MonoBehaviour
         }
     }
     public GameObject ObjectActivate()
-    {
-        obj = pooledObjects.Dequeue();
-        obj.SetActive(true);
-        pooledObjects.Enqueue(obj);
+    {    
+        
+         var obj= pooledObjects.Peek();
+         obj.SetActive(true);
 
-        return obj;
+       return obj;
     }
-   public GameObject ObjectDeactivate ()
-   {    
+    
+    public GameObject Deactivate(GameObject aObject)
+    {   
+        
+        aObject=pooledObjects.Dequeue();
+        aObject.SetActive(false);
 
-        obj.SetActive(false);
-        return obj;
-   }
+        pooledObjects.Enqueue(aObject);
+
+        poolCounter++;
+        
+        return aObject;
+    }
+   
+   
 }

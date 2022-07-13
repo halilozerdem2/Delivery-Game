@@ -7,6 +7,7 @@ public class Package : MonoBehaviour
    public Vector2 packagePos => transform.position;
    public bool isCollide=false;
    public bool delieverd=false;
+   
 
   private void OnTriggerEnter2D(Collider2D other) 
   {   
