@@ -11,7 +11,7 @@ public class Delivery : MonoBehaviour
     [SerializeField] Color32 hasPackageColor =new Color32(1,1,1,1);
     [SerializeField] Color32 noPackageColor =new Color32(1,1,1,1);
 
-    private int PackagesOnTheScreen=0;
+    [SerializeField] private int PackagesOnTheScreen;
     
     SpriteRenderer spriteRenderer;
     public Vector2 LocationOfThePackageToSpawn;
@@ -23,8 +23,9 @@ public class Delivery : MonoBehaviour
 
      private void Start() 
      {
-        if(PackagesOnTheScreen<3)
-            for (int i = 0; i < 3-PackagesOnTheScreen; i++)
+        PackagesOnTheScreen=3;
+
+        for (int i = 0; i < PackagesOnTheScreen; i++)
                 AddNewPackage();
         
         
@@ -34,10 +35,11 @@ public class Delivery : MonoBehaviour
     
     private void Update() 
     {   //Ekranda yalnızca üç adet paket görünsün
-        //if(PackagesOnTheScreen<3)
-           //for (int i = 0; i < 3-PackagesOnTheScreen; i++)
-               // AddNewPackage();
-            
+        
+        if(PackagesOnTheScreen<3)
+            for (int i = 0; i < 3-PackagesOnTheScreen; i++)
+                 AddNewPackage();
+                  
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -75,6 +77,7 @@ public class Delivery : MonoBehaviour
     
     private void AddNewPackage()
     {
+        PackagesOnTheScreen++;
         Xint=Random.Range(-50,50);
         Yint=Random.Range(-50,50);   
         
