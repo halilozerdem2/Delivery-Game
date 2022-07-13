@@ -5,7 +5,8 @@ using UnityEngine;
 public class Package : MonoBehaviour
 {
    public Vector2 packagePos => transform.position;
-   public bool isCollide;
+   public bool isCollide=false;
+   public bool delieverd=false;
 
   private void OnTriggerEnter2D(Collider2D other) 
   {   
@@ -13,7 +14,12 @@ public class Package : MonoBehaviour
          {   
             isCollide = true;
          }
+      if(other.tag=="Customer")
+      {
+         delieverd=true;
+      }
   }
+   
 
    private void Awake() 
    {
@@ -22,7 +28,7 @@ public class Package : MonoBehaviour
 
    private void Update() 
    {
-      if(isCollide) {
+      if(isCollide&& !delieverd) {
          this.transform.position=DriverScript.PlayerPosition;
       }
    }
