@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Package : MonoBehaviour
 {
    public Vector2 packagePos => transform.position;
    public bool isCollide=false;
    public bool delieverd=false;
    
-
   private void OnTriggerEnter2D(Collider2D other) 
   {   
       if(other.tag=="Player")
@@ -24,6 +24,7 @@ public class Package : MonoBehaviour
 
    private void Awake() 
    {
+      
       isCollide = false;
    }
 
