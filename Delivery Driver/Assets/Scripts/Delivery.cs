@@ -17,7 +17,7 @@ public class Delivery : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Vector2 LocationOfThePackageToSpawn;
     public int Xint;
-    private int Counter;
+    private int Counter=10;
     public int Yint;
 
     
