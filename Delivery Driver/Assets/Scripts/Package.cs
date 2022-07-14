@@ -2,31 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Package : MonoBehaviour
 {
    public Vector2 packagePos => transform.position;
    public bool isCollide=false;
    public bool delieverd=false;
 
+
    public List<Vector2> PossibleLocationOfPackages;
    public Vector2 Location;
    public int Xint;
    public int Yint;
 
-    private void Awake() 
+   
+   private void Awake() 
    {
+      
       isCollide = false;
    }
 
-   private void Start() 
-   {
-     
-   }
    private void Update() 
    {
-      if(isCollide&& !delieverd) {
-         this.transform.position=DriverScript.PlayerPosition;
-      }
+      if(isCollide&& !delieverd) 
+          this.transform.position=DriverScript.PlayerPosition;
+      
    }
     private void OnTriggerEnter2D(Collider2D other) 
   {   
@@ -49,11 +49,10 @@ public class Package : MonoBehaviour
          Xint=Random.Range(50,-50);
          Yint=Random.Range(50,-50);
 
+
          Location= new Vector2(Xint,Yint);
          PossibleLocationOfPackages.Add(Location);
-        
-      }
-
-   return Location;
+   
   }
+   return Location;
 }

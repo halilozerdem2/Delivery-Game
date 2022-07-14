@@ -16,9 +16,11 @@ public class Delivery : MonoBehaviour
     
     SpriteRenderer spriteRenderer;
     public Vector2 LocationOfThePackageToSpawn;
+
     public Package PackageObject;
+
+    private int Counter=10;
     
-    private int Counter;
     bool hasPackage;
 
    

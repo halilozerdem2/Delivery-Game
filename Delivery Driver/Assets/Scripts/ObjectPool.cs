@@ -42,8 +42,6 @@ public class ObjectPool : MonoBehaviour
 
         pooledObjects.Enqueue(aObject);
 
-        
-        
         return aObject;
     }
    
