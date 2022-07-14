@@ -16,11 +16,9 @@ public class Delivery : MonoBehaviour
     
     SpriteRenderer spriteRenderer;
     public Vector2 LocationOfThePackageToSpawn;
-    public int Xint;
-    private int Counter;
-    public int Yint;
-
+    public Package PackageObject;
     
+    private int Counter;
     bool hasPackage;
 
    
@@ -33,7 +31,7 @@ public class Delivery : MonoBehaviour
    
     private void Update() 
     {
-        if(Counter==objectPool.poolCounter)
+        if(Counter==15)
             {
                 Debug.Log("Oyun Bitti");
                 Application.Quit();
@@ -73,10 +71,8 @@ public class Delivery : MonoBehaviour
     
     private void AddNewPackage()
     {
-        Xint=Random.Range(-50,50);
-        Yint=Random.Range(-50,50);   
         
-        LocationOfThePackageToSpawn=new Vector2(Xint,Yint);
+        LocationOfThePackageToSpawn= PackageObject.CalculateTheLocation();
         
         var obj=objectPool.ObjectActivate();
         obj.transform.position=LocationOfThePackageToSpawn;

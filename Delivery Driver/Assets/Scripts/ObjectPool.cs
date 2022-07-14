@@ -5,8 +5,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     private Queue<GameObject> pooledObjects;
-    public int poolCounter;
-    
+   
     [SerializeField] private GameObject objectPrefab;
     
     [SerializeField] private int poolsize;
@@ -43,7 +42,7 @@ public class ObjectPool : MonoBehaviour
 
         pooledObjects.Enqueue(aObject);
 
-        poolCounter++;
+        
         
         return aObject;
     }
