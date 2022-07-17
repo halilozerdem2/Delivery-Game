@@ -33,12 +33,6 @@ public class DriverScript : MonoBehaviour
 
         
     }
-   
-
-
-        
-    
-
     void OnCollisionEnter2D(Collision2D other) {
      moveSpeed=slowSpeed;
    }
