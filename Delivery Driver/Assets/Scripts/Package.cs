@@ -5,28 +5,26 @@ using UnityEngine;
 
 public class Package : MonoBehaviour
 {
-   public ObjectPool PackageObject;
-   public Delivery DeliveryObject;
+   public ObjectPool packageObject;
+   public Delivery deliveryObject;
 
-   [SerializeField] GameObject LeftWall;    
-   [SerializeField] GameObject RightWall;    
-   [SerializeField] GameObject TopWall;    
-   [SerializeField] GameObject BottomWall; 
+   [SerializeField] GameObject wall;
+
+
 
    public bool isCollide=false;
    public bool delieverd=false;
   
 
 
-   public List<Vector2> PossibleLocationOfPackages;
-   public Vector2 Location;
-   public int Xint;
-   public int Yint;
+   public List<Vector2> possibleLocationOfPackages;
+   public Vector2 location;
+   public int XPos;
+   public int YPos;
 
    
    private void Awake() 
    {
-      
       isCollide = false;
    }
 
@@ -39,12 +37,15 @@ public class Package : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
   {   
       if(other.tag=="Player")
+      {
          isCollide = true;
+      }
          
       else if(other.tag=="Customer")
+      {
          delieverd=true;
+      }
               
-      
   }
   public Vector2 AssignThePackageLocation(GameObject aPackage)
   {      
@@ -52,26 +53,22 @@ public class Package : MonoBehaviour
       {
         RandomPos(aPackage);
       }
-      while(CanSpawn(Xint,Yint)==false);
-         
-      Debug.Log(Location);
-      
-      return Location;
+      while(CanSpawn(XPos,YPos)==false);
+            
+      return location;
 
    }
 
    public void RandomPos(GameObject aPackagePos)
    {
         //<! Tanımlı harita alanı
-      int xLeftLine = (int) LeftWall.transform.position.x;
-      float xRightLine = RightWall.transform.position.x;
-      float yTopLine = TopWall.transform.position.y;
-      float yBottomLine = BottomWall.transform.position.y;
+         
 
-      Xint=Random.Range((int)xLeftLine,(int) xRightLine);
-      Yint=Random.Range((int) yBottomLine,(int) yTopLine);
+      
+      XPos=Random.Range(5,5);
+      YPos=Random.Range(5,5);
 
-      Location= new Vector2(Xint,Yint);
+      location= new Vector2(XPos,YPos);
       
    }
 

@@ -15,28 +15,25 @@ public class ObjectPool : MonoBehaviour
     {
         pooledObjects=new Queue<GameObject>();
         
-
         for (int i = 0; i < poolsize; i++)
         {
             GameObject obj=Instantiate(objectPrefab);
+            obj.transform.SetParent(transform);
             obj.SetActive(false);
 
             pooledObjects.Enqueue(obj);
-
         }
     }
     public GameObject ObjectActivate()
     {    
-        
-         var obj= pooledObjects.Peek();
-         obj.SetActive(true);
+        var obj= pooledObjects.Peek();
+        obj.SetActive(true);
 
        return obj;
     }
     
     public GameObject Deactivate(GameObject aObject)
     {   
-        
         aObject=pooledObjects.Dequeue();
         aObject.SetActive(false);
 
