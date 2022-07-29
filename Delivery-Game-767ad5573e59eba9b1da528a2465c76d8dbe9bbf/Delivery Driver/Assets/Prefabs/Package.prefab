@@ -146,13 +146,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PackageObject: {fileID: 0}
   DeliveryObject: {fileID: 0}
-  LeftWall: {fileID: 5598768454920790076, guid: ff0a07791ff68254d972ed1dd65c9bfd, type: 3}
-  RightWall: {fileID: 8638661019429782044, guid: b579cfbbc016b804ca76c0fa57010ad9, type: 3}
-  TopWall: {fileID: 3709077689264467956, guid: 2ad338842148c2649b8f0f4bd0bfaa18, type: 3}
-  BottomWall: {fileID: 1399135322018225257, guid: 70c9c24a9b070004eab218700ca1d389, type: 3}
+  LeftWall: {fileID: 26970567160835193, guid: ff0a07791ff68254d972ed1dd65c9bfd, type: 3}
+  RightWall: {fileID: 1161732140238190465, guid: b579cfbbc016b804ca76c0fa57010ad9, type: 3}
+  TopWall: {fileID: 8556931322366547825, guid: 2ad338842148c2649b8f0f4bd0bfaa18, type: 3}
+  BottomWall: {fileID: 4679160573837191622, guid: 3b3375e621f29b245825064b9afb58cd, type: 3}
   isCollide: 0
   delieverd: 0
-  PossibleLocationOfPackages: []
-  Location: {x: -32, y: 52}
-  Xint: -32
-  Yint: 52
+  PossibleLocationOfPackages:
+  - {x: -7, y: 47}
+  - {x: 13, y: -3}
+  - {x: 90, y: -73}
+  - {x: -49, y: 38}
+  - {x: -23, y: 38}
+  - {x: -30, y: -44}
+  - {x: -2, y: 32}
+  - {x: -59, y: -50}
+  - {x: -16, y: -14}
+  - {x: -27, y: -21}
+  - {x: -53, y: -9}
+  - {x: -67, y: -86}
+  - {x: 51, y: 28}
+  - {x: -66, y: -99}
+  - {x: -84, y: 25}
+  - {x: -42, y: -46}
+  - {x: 22, y: -20}
+  - {x: 34, y: -60}
+  - {x: 66, y: 22}
+  - {x: -75, y: 80}
+  - {x: -5, y: -71}
+  - {x: 83, y: -4}
+  - {x: -46, y: 90}
+  - {x: -31, y: -26}
+  Location: {x: -66, y: -21}
+  XPos: -66
+  YPos: -21

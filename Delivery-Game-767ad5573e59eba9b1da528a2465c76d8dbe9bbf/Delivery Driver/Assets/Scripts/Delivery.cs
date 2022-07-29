@@ -14,7 +14,7 @@ public class Delivery : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Package packageObject;
 
-    private int counter=0;
+    private int Counter;
     
     bool hasPackage;
    
@@ -27,37 +27,37 @@ public class Delivery : MonoBehaviour
    
     private void Update() 
     {
-        if(counter==10)
-        {
-            Debug.Log("Oyun Bitti");
-            Application.Quit();
-        }
+        if(Counter==10)
+            {
+                Debug.Log("Oyun Bitti");
+                Application.Quit();
+            }
     }
    
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(other.tag=="Package"&& !hasPackage)
-        {
-            Debug.Log("Package Picked Up!!");
-            hasPackage=true;
-            spriteRenderer.color=hasPackageColor;
-        }
+    private void OnTriggerEnter2D(Collider2D other) {
+      
+       if(other.tag=="Package"&& !hasPackage)
+            {
+                Debug.Log("Package Picked Up!!");
+                hasPackage=true;
+                spriteRenderer.color=hasPackageColor;
+            } 
 
-        else if(other.tag=="Package"&& hasPackage)
+        else if (other.tag=="Package"&& hasPackage)
         {
             Debug.Log("You already have a package. Deliever it!");
         }
         
         if(other.tag=="Customer"&& hasPackage)
-        {
-            hasPackage=false;
-            Debug.Log("Package Deliverd");
+            {
+                hasPackage=false;
+                Debug.Log("Package Deliverd");
                 
-            spriteRenderer.color=noPackageColor;
+                spriteRenderer.color=noPackageColor;
 
-            objectPool.Deactivate(package);
-            AddNewPackage();        
-        }
+                objectPool.Deactivate(package);
+                 AddNewPackage();        
+            }
 
         else if(other.tag=="Customer"&& !hasPackage)
         {
@@ -69,7 +69,7 @@ public class Delivery : MonoBehaviour
     private void AddNewPackage()
     {
         var obj=objectPool.ObjectActivate();
-        obj.transform.position=packageObject.AssignThePackageLocation(obj);
+        obj.transform.position=packageObject.AssignThePackageLocation();
     }
 
 }
