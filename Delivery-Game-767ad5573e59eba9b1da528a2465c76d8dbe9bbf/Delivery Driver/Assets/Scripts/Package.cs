@@ -33,7 +33,9 @@ public class Package : MonoBehaviour
    private void Update() 
    {
       if(isCollide&& !delieverd) 
+      {
           this.transform.position=DriverScript.PlayerPosition;
+      }
       
    }
     private void OnTriggerEnter2D(Collider2D other) 
@@ -67,11 +69,6 @@ public class Package : MonoBehaviour
       float yTopLine = TopWall.transform.position.y;
       float yBottomLine = BottomWall.transform.position.y;
 
-      Debug.Log("sol kenar x değeri" + xLeftLine);
-      Debug.Log("Sağ kenar x değeri" + xRightLine);
-      Debug.Log("üst kenar y değeri" + yTopLine);
-      Debug.Log("alt kenar y değeri" + yBottomLine);
-
       XPos=Random.Range((int)xLeftLine,(int) xRightLine);
       YPos=Random.Range((int) yBottomLine,(int) yTopLine);
       
@@ -83,14 +80,16 @@ public class Package : MonoBehaviour
    public bool CanSpawn(Vector2 pos)
    {
         //<! Nokta spawnlanabilir bir yerdeyse null döner
-        Collider2D noktanin_icinde_bulundugu_nesne = Physics2D.OverlapPoint(pos);
+        Collider2D isPossibleSpawnSpoint = Physics2D.OverlapPoint(pos);
 
         //<! Null dönmüşse => verilen nokta hiçbir objenin içinde değildir.
-        if(noktanin_icinde_bulundugu_nesne == null) {
+        if(isPossibleSpawnSpoint == null) 
+        {
+            PossibleLocationOfPackages.Add(pos);
             return true;
         }
         
-        Debug.Log(noktanin_icinde_bulundugu_nesne.name + " objesinin içinde oluştu. Konum değiştiriliyor !!");
+        Debug.Log(isPossibleSpawnSpoint.name + " objesinin içinde oluştu. Konum değiştiriliyor !!");
         //<! Null değilse => verilen nokta, belli bir objenin içindedir.
         return false;
    }
