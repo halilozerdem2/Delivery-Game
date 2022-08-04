@@ -7,7 +7,6 @@ public class DriverScript : MonoBehaviour
     [SerializeField] float steerSpeed;
     [SerializeField] float moveSpeed=25f;
     [SerializeField] float slowSpeed=15f;
-    [SerializeField] float boostSpeed=40f;
     private bool moving;
     public static Vector2 playerPosition;
    
@@ -15,7 +14,7 @@ public class DriverScript : MonoBehaviour
     void Update()
     {
         playerPosition=this.transform.position;
-        
+        //parametre göndermeli işlev
         if(Input.anyKey)
         {
             Move();
@@ -27,8 +26,8 @@ public class DriverScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.tag=="SpeedUp")
-        moveSpeed=boostSpeed;
+        if(other.tag=="SpeedUp"&& moveSpeed<=50)
+        moveSpeed+=20;
     }
    private void Move()
    {
