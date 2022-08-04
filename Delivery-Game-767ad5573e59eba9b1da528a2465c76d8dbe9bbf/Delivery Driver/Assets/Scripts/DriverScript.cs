@@ -14,11 +14,12 @@ public class DriverScript : MonoBehaviour
     void Update()
     {
         playerPosition=this.transform.position;
-        //parametre göndermeli işlev
-        if(Input.anyKey)
+        
+        if(Input.GetAxis("Vertical")!=0)
         {
-            Move();
+            Move(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
         }
+        
     }
     void OnCollisionEnter2D(Collision2D other) 
     {
@@ -29,18 +30,17 @@ public class DriverScript : MonoBehaviour
         if(other.tag=="SpeedUp"&& moveSpeed<=50)
         moveSpeed+=20;
     }
-   private void Move()
-   {
-        float steerAmount=Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
-        float moveAmount=Input.GetAxis("Vertical") * moveSpeed* Time.deltaTime;
-        
+    public void Move(float horizontalValue,float verticalValue)
+    {
+        float steerAmount=horizontalValue * steerSpeed * Time.deltaTime;
+        float moveAmount=verticalValue * moveSpeed* Time.deltaTime;
 
         if(moveAmount==0) // Hareket halinde değilse dönme
         {
             steerAmount=0;
         }
         
-        if(Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow)&&moveAmount<0)
+        if(Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow) && moveAmount<0)
         {
             transform.Rotate(0,0,steerAmount);
         }
@@ -50,5 +50,6 @@ public class DriverScript : MonoBehaviour
         }
         
         transform.Translate(0,moveAmount,0);
-   }
+    }
+
 }

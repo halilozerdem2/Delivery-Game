@@ -31,7 +31,7 @@ public class Delivery : MonoBehaviour
    
     private void Update() 
     {
-        remainText.text= (10-Counter).ToString() + " Packages Remain !";
+        remainText.text= (5-Counter).ToString() + " Packages Remain !";
     }
    
     private void OnTriggerEnter2D(Collider2D other) {

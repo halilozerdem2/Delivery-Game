@@ -8,11 +8,16 @@ public class PlayMusic : MonoBehaviour
     
     public AudioSource src;
     public AudioClip mainMenuMusic, playMusic, gameOverMusic;
+    public bool playing;
 
 
     private void Update() 
     {
         DontDestroyOnLoad(gameObject);
+        if(!src.isPlaying)
+        {
+            src.Play();
+        }
     }
          void OnEnable()
     {
@@ -31,21 +36,25 @@ public class PlayMusic : MonoBehaviour
          
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
         {
-            if(scene.name=="MainMenuScene")
+            if(scene.name=="MainMenuScene" )
             {
                 src.clip=mainMenuMusic;
+               
+                  src.Play();
                 
-                src.Play();
+                
             }    
             if(scene.name=="SampleScene")
             {
                 src.clip=playMusic;
-                src.Play(); 
+                src.Play();
+                 
             } 
             if(scene.name=="GameOverScene")
             {
                 src.clip=gameOverMusic;
-                src.Play();   
+                src.Play();
+                  
             } 
         }
   
