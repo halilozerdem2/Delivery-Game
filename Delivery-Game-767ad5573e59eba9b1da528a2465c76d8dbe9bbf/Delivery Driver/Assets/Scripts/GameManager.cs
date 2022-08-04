@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         {
             Timer.StartTimer();
 
-            if(Delivery.Counter==1)
+            if(Delivery.Counter==5)
             {
                 Timer.Finish();
                 SceneManager.LoadScene(2);
