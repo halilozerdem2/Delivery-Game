@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d21f6ece3b46479f0c328f8c6007e0, type: 3}
-  m_Name: "RenkGradyan\u0131"
+  m_Name: "RenkGradyan\u0131 1"
   m_EditorClassIdentifier: 
   colorMode: 1
   topLeft: {r: 1, g: 1, b: 1, a: 1}
-  topRight: {r: 0.46566206, g: 0.9529412, b: 0.050980363, a: 1}
+  topRight: {r: 0.17113793, g: 0.6509434, b: 0.003070495, a: 1}
   bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-  bottomRight: {r: 0.46566206, g: 0.9529412, b: 0.050980363, a: 1}
+  bottomRight: {r: 0.17113793, g: 0.6509434, b: 0.003070495, a: 1}

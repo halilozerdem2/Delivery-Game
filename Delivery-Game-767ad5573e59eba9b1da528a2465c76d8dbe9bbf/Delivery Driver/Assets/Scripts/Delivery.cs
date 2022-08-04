@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 
 public class Delivery : MonoBehaviour
 {
     [SerializeField] GameObject package;
     [SerializeField] GameObject customer;
+    [SerializeField] Text remainText;
     [SerializeField] ObjectPool objectPool;
     [SerializeField] Color32 hasPackageColor =new Color32(1,1,1,1);
     [SerializeField] Color32 noPackageColor =new Color32(1,1,1,1);
@@ -14,8 +18,8 @@ public class Delivery : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Package packageObject;
 
-    private int Counter;
-    
+    public static int Counter=0;
+     
     bool hasPackage;
    
      private void Start() 
@@ -27,27 +31,18 @@ public class Delivery : MonoBehaviour
    
     private void Update() 
     {
-        if(Counter==10)
-            {
-                Debug.Log("Oyun Bitti");
-                Application.Quit();
-            }
+        remainText.text= (10-Counter).ToString() + " Packages Remain !";
     }
    
     private void OnTriggerEnter2D(Collider2D other) {
       
-       if(other.tag=="Package"&& !hasPackage)
+        if(other.tag=="Package"&& !hasPackage)
             {
                 Debug.Log("Package Picked Up!!");
                 hasPackage=true;
                 spriteRenderer.color=hasPackageColor;
             } 
 
-        else if (other.tag=="Package"&& hasPackage)
-        {
-            Debug.Log("You already have a package. Deliever it!");
-        }
-        
         if(other.tag=="Customer"&& hasPackage)
             {
                 hasPackage=false;
@@ -56,7 +51,8 @@ public class Delivery : MonoBehaviour
                 spriteRenderer.color=noPackageColor;
 
                 objectPool.Deactivate(package);
-                 AddNewPackage();        
+                Counter++;
+                AddNewPackage();        
             }
 
         else if(other.tag=="Customer"&& !hasPackage)

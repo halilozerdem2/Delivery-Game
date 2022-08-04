@@ -34,7 +34,7 @@ public class Package : MonoBehaviour
    {
       if(isCollide&& !delieverd) 
       {
-          this.transform.position=DriverScript.PlayerPosition;
+          this.transform.position=DriverScript.playerPosition;
       }
       
    }
@@ -89,8 +89,6 @@ public class Package : MonoBehaviour
             return true;
         }
         
-        Debug.Log(isPossibleSpawnSpoint.name + " objesinin içinde oluştu. Konum değiştiriliyor !!");
-        //<! Null değilse => verilen nokta, belli bir objenin içindedir.
         return false;
    }
 

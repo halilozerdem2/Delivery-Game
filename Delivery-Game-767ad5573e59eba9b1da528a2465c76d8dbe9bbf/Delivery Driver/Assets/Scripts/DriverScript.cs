@@ -9,12 +9,12 @@ public class DriverScript : MonoBehaviour
     [SerializeField] float slowSpeed=15f;
     [SerializeField] float boostSpeed=40f;
     private bool moving;
-    public static Vector2 PlayerPosition;
+    public static Vector2 playerPosition;
    
 
     void Update()
     {
-        PlayerPosition=this.transform.position;
+        playerPosition=this.transform.position;
         
         if(Input.anyKey)
         {
